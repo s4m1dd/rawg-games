@@ -5,9 +5,9 @@ Kotlin + XML Views, arsitektur **MVVM**, di luar itu hanya library Jetpack/Andro
 
 ## Screenshot
 
-| Games list | Detail |
-|---|---|
-| ![Games list](docs/list.png) | ![Detail](docs/detail.png) |
+| Games list | Detail | Favorite |
+|---|---|---|
+| ![Games list](docs/list.png) | ![Detail](docs/detail.png) | ![Favorite](docs/favorites.png) |
 
 ## Fitur
 

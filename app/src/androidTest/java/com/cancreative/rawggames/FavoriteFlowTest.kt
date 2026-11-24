@@ -24,6 +24,7 @@ class FavoriteFlowTest {
     @Before
     fun installFakeBackend() {
         ServiceLocator.repository = GameRepository(FakeApi(), FakeDao())
+        ServiceLocator.isTestBackend = true
     }
 
     @Test

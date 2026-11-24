@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cancreative.rawggames.BuildConfig
 import com.cancreative.rawggames.MainActivity
 import com.cancreative.rawggames.R
+import com.cancreative.rawggames.ServiceLocator
 import com.cancreative.rawggames.ui.GameAdapter
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -36,7 +37,7 @@ class GameListFragment : Fragment(R.layout.fragment_game_list) {
         list.layoutManager = LinearLayoutManager(requireContext())
         list.adapter = adapter
 
-        if (BuildConfig.RAWG_API_KEY.isBlank()) {
+        if (BuildConfig.RAWG_API_KEY.isBlank() && !ServiceLocator.isTestBackend) {
             progress.visibility = View.GONE
             message.text = getString(R.string.no_api_key)
             message.visibility = View.VISIBLE

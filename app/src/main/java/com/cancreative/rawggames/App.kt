@@ -20,4 +20,6 @@ class App : Application() {
 
 object ServiceLocator {
     var repository: GameRepository? = null
+    // Set by UI tests; the injected fake backend makes the missing-API-key guard moot.
+    var isTestBackend = false
 }

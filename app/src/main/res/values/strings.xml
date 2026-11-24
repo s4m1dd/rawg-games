@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RAWG Games</string>
+    <string name="tab_games">Games</string>
+    <string name="tab_favorites">Favorites</string>
+    <string name="search_hint">Search games</string>
+    <string name="meta">★ %1$.1f · %2$s</string>
+    <string name="empty_games">No games found</string>
+    <string name="empty_favorites">No favorites yet</string>
+    <string name="error_generic">Something went wrong</string>
+    <string name="favorite">Add to favorites</string>
+    <string name="unfavorite">Remove from favorites</string>
+    <string name="delete">Delete favorite</string>
+    <string name="no_api_key">RAWG_API_KEY is missing. Add it to local.properties and rebuild.</string>
+</resources>

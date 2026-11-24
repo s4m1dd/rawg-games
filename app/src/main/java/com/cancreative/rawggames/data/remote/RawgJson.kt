@@ -10,7 +10,6 @@ object RawgJson {
         val games = buildList {
             if (results != null) for (i in 0 until results.length()) add(game(results.getJSONObject(i)))
         }
-        // optString returns the literal "null" for JSON null, so check isNull first.
         return GamePage(games, hasNext = !root.isNull("next") && root.optString("next").isNotBlank())
     }
 
@@ -24,6 +23,9 @@ object RawgJson {
             released = o.stringOrNull("released"),
             genres = genres(o),
             description = o.stringOrNull("description_raw") ?: o.stringOrNull("description").orEmpty(),
+            added = o.optInt("added", 0),
+            platforms = platforms(o),
+            developers = developers(o),
         )
     }
 
@@ -36,12 +38,24 @@ object RawgJson {
         genres = genres(o),
     )
 
+    private fun platforms(o: JSONObject): List<String> {
+        val arr = o.optJSONArray("platforms") ?: return emptyList()
+        return (0 until arr.length()).mapNotNull {
+            arr.optJSONObject(it)?.optJSONObject("platform")?.stringOrNull("name")
+        }
+    }
+
+    private fun developers(o: JSONObject): List<String> {
+        val arr = o.optJSONArray("developers") ?: return emptyList()
+        return (0 until arr.length()).mapNotNull { arr.optJSONObject(it)?.stringOrNull("name") }
+    }
+
     private fun genres(o: JSONObject): List<String> {
         val arr = o.optJSONArray("genres") ?: return emptyList()
         return (0 until arr.length()).mapNotNull { arr.optJSONObject(it)?.stringOrNull("name") }
     }
 
-    // org.json returns the string "null" for JSON null values via optString.
+    // optString returns the literal "null" for JSON null.
     private fun JSONObject.stringOrNull(key: String): String? =
         if (isNull(key)) null else optString(key).ifBlank { null }
 }

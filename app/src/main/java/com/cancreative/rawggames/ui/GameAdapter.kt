@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cancreative.rawggames.R
 import com.cancreative.rawggames.data.remote.Game
 import com.cancreative.rawggames.util.ImageLoader
+import com.cancreative.rawggames.util.formatReleaseDate
 
 class GameAdapter(
     private val onClick: (Game) -> Unit,
@@ -26,12 +27,14 @@ class GameAdapter(
     inner class Holder(view: View) : RecyclerView.ViewHolder(view) {
         private val cover: ImageView = view.findViewById(R.id.cover)
         private val name: TextView = view.findViewById(R.id.name)
-        private val meta: TextView = view.findViewById(R.id.meta)
+        private val release: TextView = view.findViewById(R.id.release)
+        private val rating: TextView = view.findViewById(R.id.rating)
         private val delete: ImageButton = view.findViewById(R.id.delete)
 
         fun bind(game: Game) {
             name.text = game.name
-            meta.text = itemView.context.getString(R.string.meta, game.rating, game.released.orEmpty())
+            release.text = itemView.context.getString(R.string.release_date, formatReleaseDate(game.released))
+            rating.text = itemView.context.getString(R.string.rating, game.rating)
             ImageLoader.load(game.backgroundImage, cover)
             itemView.setOnClickListener { onClick(game) }
             delete.visibility = if (onDelete == null) View.GONE else View.VISIBLE

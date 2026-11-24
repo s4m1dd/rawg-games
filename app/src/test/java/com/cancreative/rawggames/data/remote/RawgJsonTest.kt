@@ -43,12 +43,15 @@ class RawgJsonTest {
     fun parsesDetailWithDescriptionRaw() {
         val detail = RawgJson.parseDetail(
             """{"id":7,"name":"Hades","rating":4.3,"released":"2020-09-17",
-                "genres":[{"name":"RPG"}],"description_raw":"<p>Desc</p>"}"""
+                "genres":[{"name":"RPG"}],"description_raw":"<p>Desc</p>",
+                "added":200,"platforms":[{"platform":{"name":"PlayStation 4"}},{"platform":{"name":"PC"}}]}"""
         )
 
         assertEquals(7, detail.id)
         assertEquals("Hades", detail.name)
         assertEquals(listOf("RPG"), detail.genres)
         assertEquals("<p>Desc</p>", detail.description)
+        assertEquals(200, detail.added)
+        assertEquals(listOf("PlayStation 4", "PC"), detail.platforms)
     }
 }

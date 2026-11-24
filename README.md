@@ -14,7 +14,7 @@ Kotlin + XML Views, arsitektur **MVVM**, di luar itu hanya library Jetpack/Andro
 - Games list — `GET /api/games`
 - Paging — `page` + `page_size=20`, load more saat scroll mendekati akhir
 - Search — `?search=`, debounce 350 ms
-- Detail — `GET /api/games/{id}`
+- Detail — `GET /api/games/{id}`, header back/title/favorite sesuai mockup
 - Favorite — Room (list, add, delete), bertahan setelah app ditutup
 
 ## Arsitektur
@@ -47,7 +47,7 @@ util/        ImageLoader — HttpURLConnection + BitmapFactory + LruCache
 
 ```bash
 ./gradlew assembleDebug        # build APK
-./gradlew test                 # unit test (8 test)
+./gradlew test                 # unit test (10 test)
 adb devices                    # pastikan HP terpasang
 ./gradlew connectedDebugAndroidTest   # UI test (Espresso)
 ```

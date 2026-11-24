@@ -17,7 +17,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-// Uses the fake backend so the test never touches the network or the real database.
+// Fake backend: no network, no real DB.
 @RunWith(AndroidJUnit4::class)
 class FavoriteFlowTest {
 
@@ -35,7 +35,7 @@ class FavoriteFlowTest {
 
             await(withId(R.id.toggle_favorite))
             onView(withId(R.id.toggle_favorite)).perform(click())
-            await(withText(R.string.unfavorite))
+            await(withContentDescription(R.string.unfavorite))
 
             pressBack()
             onView(withId(R.id.tab_favorites)).perform(click())

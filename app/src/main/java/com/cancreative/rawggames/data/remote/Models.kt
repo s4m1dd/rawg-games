@@ -17,6 +17,9 @@ data class GameDetail(
     val released: String?,
     val genres: List<String>,
     val description: String,
+    val added: Int = 0,
+    val platforms: List<String> = emptyList(),
+    val developers: List<String> = emptyList(),
 )
 
 data class GamePage(

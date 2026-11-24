@@ -8,7 +8,7 @@ import com.cancreative.rawggames.data.remote.RawgClient
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
-        // Kept swappable so UI tests can install a fake repository before launching the activity.
+        // Swappable so UI tests can inject a fake first.
         if (ServiceLocator.repository == null) {
             ServiceLocator.repository = GameRepository(
                 RawgClient(BuildConfig.RAWG_API_KEY),
@@ -20,6 +20,6 @@ class App : Application() {
 
 object ServiceLocator {
     var repository: GameRepository? = null
-    // Set by UI tests; the injected fake backend makes the missing-API-key guard moot.
+    // Set by UI tests.
     var isTestBackend = false
 }

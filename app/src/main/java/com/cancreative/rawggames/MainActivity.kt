@@ -2,6 +2,7 @@ package com.cancreative.rawggames
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.cancreative.rawggames.ui.favorite.FavoriteFragment
@@ -25,6 +26,10 @@ class MainActivity : AppCompatActivity() {
         }
         if (savedInstanceState == null) {
             bottomNav.selectedItemId = R.id.tab_games
+        }
+        // Detail is full-screen, so hide the tab bar while it is on top.
+        supportFragmentManager.addOnBackStackChangedListener {
+            bottomNav.isVisible = supportFragmentManager.backStackEntryCount == 0
         }
     }
 

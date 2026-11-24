@@ -12,7 +12,7 @@ import kotlinx.coroutines.withContext
 import java.net.HttpURLConnection
 import java.net.URL
 
-// shortcut: memory cache only, no disk cache; covers reload on app restart only by refetching.
+// shortcut: memory cache only; a restart refetches everything.
 object ImageLoader {
 
     private val cache = object : LruCache<String, Bitmap>(8 * 1024 * 1024) {

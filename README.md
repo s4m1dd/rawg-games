@@ -3,6 +3,12 @@
 Kotlin + XML Views, arsitektur **MVVM**, di luar itu hanya library Jetpack/AndroidX resmi
 (tanpa Retrofit, OkHttp, Glide/Coil, Paging3, Hilt, atau Navigation).
 
+## Screenshot
+
+| Games list | Detail |
+|---|---|
+| ![Games list](docs/list.png) | ![Detail](docs/detail.png) |
+
 ## Fitur
 
 - Games list — `GET /api/games`

@@ -2,8 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/tab_games"
+        android:icon="@android:drawable/ic_menu_gallery"
         android:title="@string/tab_games" />
     <item
         android:id="@+id/tab_favorites"
+        android:icon="@android:drawable/btn_star_big_on"
         android:title="@string/tab_favorites" />
 </menu>
